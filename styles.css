@@ -13,6 +13,7 @@
     --card-bg: #1e293b;
     --border-color: #334155;
     --accent: #3b82f6;
+    --sidebar-width: 250px;
 }
 
 html {
@@ -24,6 +25,8 @@ body {
     background-color: var(--dark-bg);
     color: var(--light-text);
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -32,50 +35,75 @@ body {
     padding: 0 20px;
 }
 
-/* Navigation */
+/* Container Wrapper for Flexbox Layout */
+.container-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Navigation - Vertical Sidebar */
 .navbar {
-    position: sticky;
+    width: var(--sidebar-width);
+    position: fixed;
+    left: 0;
     top: 0;
-    background-color: rgba(15, 23, 42, 0.95);
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.98);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
-    padding: 1rem 0;
+    border-right: 1px solid var(--border-color);
+    padding: 0;
+    overflow-y: auto;
     z-index: 1000;
 }
 
 .nav-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    flex-direction: column;
+    padding: 30px 20px;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .nav-menu {
     display: flex;
+    flex-direction: column;
     list-style: none;
-    gap: 2rem;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
 }
 
 .nav-link {
     color: var(--light-text);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 12px 15px;
+    border-left: 3px solid transparent;
+    display: block;
     font-weight: 500;
 }
 
 .nav-link:hover {
     color: var(--primary-color);
+    border-left-color: var(--primary-color);
+    padding-left: 20px;
+    background: rgba(99, 102, 241, 0.05);
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
 }
 
 /* Hero Section */
@@ -349,9 +377,34 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    :root {
+        --sidebar-width: 200px;
+    }
+
+    .navbar {
+        width: var(--sidebar-width);
+    }
+
+    .main-content {
+        margin-left: var(--sidebar-width);
+    }
+
     .nav-menu {
-        gap: 1rem;
-        font-size: 0.9rem;
+        gap: 10px;
+    }
+
+    .nav-link {
+        padding: 10px 12px;
+        font-size: 0.95rem;
+    }
+
+    .nav-link:hover {
+        padding-left: 15px;
+    }
+
+    .logo {
+        font-size: 1rem;
+        margin-bottom: 30px;
     }
 
     .hero h1 {
@@ -389,19 +442,63 @@ body {
         height: 50px;
         font-size: 1.2rem;
     }
+
+    .about h2,
+    .projects h2,
+    .skills h2,
+    .contact h2 {
+        font-size: 2rem;
+    }
 }
 
 @media (max-width: 480px) {
+    :root {
+        --sidebar-width: 70px;
+    }
+
+    .navbar {
+        width: var(--sidebar-width);
+    }
+
+    .main-content {
+        margin-left: var(--sidebar-width);
+    }
+
+    .nav-container {
+        padding: 20px 5px;
+    }
+
+    .logo {
+        font-size: 0.8rem;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .nav-link {
+        padding: 8px 5px;
+        font-size: 0.7rem;
+        text-align: center;
+    }
+
     .hero h1 {
         font-size: 2rem;
     }
 
-    .nav-menu {
-        gap: 0.5rem;
-        font-size: 0.8rem;
+    .hero {
+        min-height: 70vh;
     }
 
-    .logo {
-        font-size: 1.2rem;
+    .about h2,
+    .projects h2,
+    .skills h2,
+    .contact h2 {
+        font-size: 1.5rem;
+    }
+
+    .about,
+    .projects,
+    .skills,
+    .contact {
+        padding: 3rem 1rem;
     }
 }
