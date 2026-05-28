@@ -192,6 +192,7 @@ body {
 }
 
 .about h2,
+.experience h2,
 .projects h2,
 .skills h2,
 .contact h2 {
@@ -207,6 +208,62 @@ body {
     color: #cbd5e1;
     margin-bottom: 1.5rem;
     text-align: center;
+}
+
+/* Experience Section */
+.experience {
+    padding: 6rem 2rem;
+    background: var(--dark-bg);
+}
+
+.experience-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.experience-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--primary-color);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+    transform: translateX(10px);
+    border-left-color: var(--secondary-color);
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.15);
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.experience-item h3 {
+    font-size: 1.3rem;
+    color: var(--light-text);
+    margin: 0;
+}
+
+.experience-date {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.experience-company {
+    font-size: 1.05rem;
+    color: var(--primary-color);
+    margin: 0.5rem 0 0 0;
+    font-weight: 500;
 }
 
 /* Projects Section */
@@ -444,10 +501,16 @@ body {
     }
 
     .about h2,
+    .experience h2,
     .projects h2,
     .skills h2,
     .contact h2 {
         font-size: 2rem;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 
@@ -489,6 +552,7 @@ body {
     }
 
     .about h2,
+    .experience h2,
     .projects h2,
     .skills h2,
     .contact h2 {
@@ -496,9 +560,26 @@ body {
     }
 
     .about,
+    .experience,
     .projects,
     .skills,
     .contact {
         padding: 3rem 1rem;
+    }
+
+    .experience-item {
+        padding: 1.5rem;
+    }
+
+    .experience-item h3 {
+        font-size: 1rem;
+    }
+
+    .experience-company {
+        font-size: 0.95rem;
+    }
+
+    .experience-date {
+        font-size: 0.85rem;
     }
 }
